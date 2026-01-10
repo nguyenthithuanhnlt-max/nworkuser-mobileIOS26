@@ -1,0 +1,243 @@
+/* App Structure */
+.app-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.view-section {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    flex: 1;
+    overflow: hidden;
+}
+
+.content-scroll {
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: calc(83px + var(--sab));
+    /* Tab bar height + safe area */
+    padding-top: var(--sat);
+}
+
+/* Header */
+.main-header {
+    background: transparent;
+    padding: 20px 20px 10px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.date-display {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+.user-avatar img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.greeting {
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+    /* iOS Large Title tight tracking */
+}
+
+/* Quote Card - Glassmorphism */
+.quote-card {
+    background: var(--card-background);
+    padding: 16px;
+    border-radius: 16px;
+    margin-top: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    /* Basic Glass effect if needed, but solid is standard for cards */
+}
+
+.quote-text {
+    font-style: italic;
+    font-size: 15px;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.quote-author {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    display: block;
+    text-align: right;
+}
+
+/* Card Stack (Inset Grouped List) */
+.card-stack {
+    margin: 20px 16px;
+    background: var(--card-background);
+    border-radius: 12px;
+    overflow: hidden;
+    /* For inner borders */
+}
+
+.action-card {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.action-card:active {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Divider lines between items, but not last */
+.action-card:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 56px;
+    /* Align with text start */
+    right: 0;
+    height: 0.5px;
+    background-color: var(--separator-color);
+}
+
+.card-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+}
+
+.icon-svg {
+    width: 24px;
+    height: 24px;
+}
+
+.icon-red {
+    color: var(--accent-color);
+}
+
+.card-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    font-size: 17px;
+    font-weight: 500;
+    /* Apple uses standard or medium weight for list items */
+}
+
+.card-arrow {
+    color: #C7C7CC;
+    /* Standard iOS Chevron Color */
+    display: flex;
+    align-items: center;
+}
+
+.chevron {
+    width: 20px;
+    height: 20px;
+}
+
+/* Tab Bar */
+.tab-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: calc(54px + var(--sab));
+    /* Standard touch height + safe area */
+    background: var(--tab-bar-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 0.5px solid rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: var(--sab);
+    z-index: 1000;
+}
+
+.tab-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    padding-top: 4px;
+    /* Optical adjustment */
+}
+
+.tab-item.active {
+    color: var(--accent-color);
+    /* Tint Color */
+}
+
+.tab-icon {
+    margin-bottom: 2px;
+}
+
+.tab-icon .icon-svg {
+    width: 24px;
+    height: 24px;
+}
+
+.tab-label {
+    font-size: 10px;
+    font-weight: 500;
+}
+
+@media (prefers-color-scheme: dark) {
+    .tab-bar {
+        border-top: 0.5px solid rgba(255, 255, 255, 0.15);
+    }
+}
+
+/* Menu View Specifics */
+.profile-large-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 16px;
+    object-fit: cover;
+}
+
+.profile-name {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.profile-role {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin-top: 2px;
+}
+
+.logout-text {
+    color: var(--accent-color);
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+}
