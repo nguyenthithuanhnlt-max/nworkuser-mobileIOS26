@@ -1,3 +1,61 @@
+:root {
+    /* iOS 26 - Spatial & Glass Theme */
+    --bg-gradient: radial-gradient(circle at 50% 0%, #e0eaff 0%, #f2f2f7 50%, #ffffff 100%);
+    --glass-bg: rgba(255, 255, 255, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.5);
+
+    --background-color: #F2F2F7;
+    --card-background: rgba(255, 255, 255, 0.7);
+    --text-primary: #1d1d1f;
+    --text-secondary: rgba(60, 60, 67, 0.6);
+    --separator-color: rgba(60, 60, 67, 0.1);
+    --accent-color: #0071e3;
+    --tab-bar-bg: rgba(255, 255, 255, 0.5);
+
+    /* System Spectrum - Refined */
+    --system-blue: #0071e3;
+    --system-orange: #ff9f0a;
+    --system-green: #30d158;
+    --system-red: #ff3b30;
+    --system-teal: #64d2ff;
+    --system-indigo: #5e5ce6;
+
+    --sat: env(safe-area-inset-top, 20px);
+    --sab: env(safe-area-inset-bottom, 20px);
+
+    --radius-xl: 28px;
+    --radius-l: 22px;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-gradient: radial-gradient(circle at 50% 0%, #1a1a1a 0%, #000000 100%);
+        --glass-bg: rgba(28, 28, 30, 0.4);
+        --glass-border: rgba(255, 255, 255, 0.1);
+
+        --background-color: #000000;
+        --card-background: rgba(28, 28, 30, 0.7);
+        --text-primary: #f5f5f7;
+        --text-secondary: rgba(235, 235, 245, 0.6);
+        --separator-color: rgba(84, 84, 88, 0.3);
+        --accent-color: #0a84ff;
+        --tab-bar-bg: rgba(28, 28, 30, 0.6);
+    }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg-gradient);
+    background-attachment: fixed;
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    letter-spacing: -0.01em;
+}
+
 /* App Structure */
 .app-container {
     height: 100%;
@@ -21,51 +79,111 @@
     padding-top: var(--sat);
 }
 
-/* Header */
+/* Header with Dynamic Island effect */
 .main-header {
     background: transparent;
-    padding: 20px 20px 10px 20px;
+    padding: 24px 20px 10px 20px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 20px;
 }
 
-.header-top {
+.header-island {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.island-content {
+    background: #000;
+    padding: 10px 20px;
+    border-radius: 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+    max-width: 340px;
+    color: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .date-display {
-    font-size: 13px;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
 }
 
 .user-avatar img {
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
-    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .greeting {
-    font-size: 34px;
-    font-weight: 700;
+    font-size: 32px;
+    font-weight: 800;
     line-height: 1.1;
-    letter-spacing: -0.5px;
-    /* iOS Large Title tight tracking */
+    letter-spacing: -0.8px;
+    margin-bottom: 16px;
+    color: var(--text-primary);
 }
 
-/* Quote Card - Glassmorphism */
+/* Glass Cards Grid */
+.card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 20px 20px;
+}
+
+.action-card-glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.action-card-glass:active {
+    transform: scale(0.96) translateY(2px);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.card-icon-spatial {
+    width: 54px;
+    height: 54px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-title-grid {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* Quote Card Glass */
 .quote-card {
-    background: var(--card-background);
-    padding: 16px;
-    border-radius: 16px;
-    margin-top: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    /* Basic Glass effect if needed, but solid is standard for cards */
+    background: var(--glass-bg);
+    backdrop-filter: blur(30px) saturate(150%);
+    -webkit-backdrop-filter: blur(30px) saturate(150%);
+    padding: 20px;
+    border-radius: var(--radius-l);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.03);
 }
 
 .quote-text {
@@ -125,6 +243,8 @@
     align-items: center;
     justify-content: center;
     margin-right: 16px;
+    color: white;
+    /* Icons on colored backgrounds are usually white */
 }
 
 .icon-svg {
@@ -132,8 +252,29 @@
     height: 24px;
 }
 
+/* System Spectrum Utilities */
+.icon-blue {
+    background-color: var(--system-blue);
+}
+
+.icon-orange {
+    background-color: var(--system-orange);
+}
+
+.icon-green {
+    background-color: var(--system-green);
+}
+
 .icon-red {
-    color: var(--accent-color);
+    background-color: var(--system-red);
+}
+
+.icon-teal {
+    background-color: var(--system-teal);
+}
+
+.icon-indigo {
+    background-color: var(--system-indigo);
 }
 
 .card-text {
@@ -160,38 +301,46 @@
     height: 20px;
 }
 
-/* Tab Bar */
+/* Floating Dock Tab Bar */
 .tab-bar {
     position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: calc(54px + var(--sab));
-    /* Standard touch height + safe area */
+    bottom: 24px;
+    left: 20px;
+    right: 20px;
+    height: 72px;
     background: var(--tab-bar-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-top: 0.5px solid rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(40px) saturate(210%);
+    -webkit-backdrop-filter: blur(40px) saturate(210%);
+    border: 1px solid var(--glass-border);
+    border-radius: 36px;
     display: flex;
     justify-content: space-around;
-    padding-bottom: var(--sab);
+    align-items: center;
+    padding: 0 10px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .tab-item {
     flex: 1;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     color: var(--text-secondary);
-    padding-top: 4px;
-    /* Optical adjustment */
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 20px;
+}
+
+.tab-item:active {
+    background: rgba(0, 0, 0, 0.05);
+    transform: scale(0.9);
 }
 
 .tab-item.active {
     color: var(--accent-color);
-    /* Tint Color */
 }
 
 .tab-icon {
@@ -199,45 +348,17 @@
 }
 
 .tab-icon .icon-svg {
-    width: 24px;
-    height: 24px;
+    width: 26px;
+    height: 26px;
 }
 
 .tab-label {
-    font-size: 10px;
-    font-weight: 500;
+    font-size: 11px;
+    font-weight: 600;
 }
 
 @media (prefers-color-scheme: dark) {
     .tab-bar {
         border-top: 0.5px solid rgba(255, 255, 255, 0.15);
     }
-}
-
-/* Menu View Specifics */
-.profile-large-img {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    margin-right: 16px;
-    object-fit: cover;
-}
-
-.profile-name {
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--text-primary);
-}
-
-.profile-role {
-    font-size: 15px;
-    color: var(--text-secondary);
-    margin-top: 2px;
-}
-
-.logout-text {
-    color: var(--accent-color);
-    width: 100%;
-    text-align: center;
-    font-weight: 600;
 }
