@@ -1,4 +1,5 @@
 :root {
+<<<<<<< HEAD
     /* iOS 26 - Spatial & Glass Theme */
     --bg-gradient: radial-gradient(circle at 50% 0%, #e0eaff 0%, #f2f2f7 50%, #ffffff 100%);
     --glass-bg: rgba(255, 255, 255, 0.4);
@@ -25,10 +26,40 @@
 
     --radius-xl: 28px;
     --radius-l: 22px;
+=======
+    /* iOS System Colors - Light Mode */
+    --background-color: #F2F2F7;
+    /* System Grouped Background */
+    --card-background: #FFFFFF;
+    /* Secondary System Grouped Background */
+    --text-primary: #000000;
+    /* Label */
+    --text-secondary: rgba(60, 60, 67, 0.6);
+    /* Secondary Label */
+    --separator-color: rgba(60, 60, 67, 0.29);
+    /* Separator / Opaque Separator */
+    --accent-color: #007AFF;
+    /* System Blue */
+    --tab-bar-bg: rgba(249, 249, 249, 0.94);
+    /* Bar Background */
+
+    /* System Spectrum Colors - Light Mode */
+    --system-blue: #007AFF;
+    --system-orange: #FF9500;
+    --system-green: #34C759;
+    --system-red: #FF3B30;
+    --system-teal: #30B0C7;
+    --system-indigo: #5856D6;
+
+    /* Safe Area Variables (handled by env() in modern browsers, fallback here) */
+    --sat: env(safe-area-inset-top, 20px);
+    --sab: env(safe-area-inset-bottom, 20px);
+>>>>>>> e6176b2a897dc428f4064e7dd78eff7c6552ac39
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
+<<<<<<< HEAD
         --bg-gradient: radial-gradient(circle at 50% 0%, #1a1a1a 0%, #000000 100%);
         --glass-bg: rgba(28, 28, 30, 0.4);
         --glass-border: rgba(255, 255, 255, 0.1);
@@ -40,20 +71,48 @@
         --separator-color: rgba(84, 84, 88, 0.3);
         --accent-color: #0a84ff;
         --tab-bar-bg: rgba(28, 28, 30, 0.6);
+=======
+        /* iOS System Colors - Dark Mode */
+        --background-color: #000000;
+        --card-background: #1C1C1E;
+        --text-primary: #FFFFFF;
+        --text-secondary: rgba(235, 235, 245, 0.6);
+        --separator-color: rgba(84, 84, 88, 0.65);
+        --accent-color: #0A84FF;
+        /* Dark Mode Blue */
+        --tab-bar-bg: rgba(29, 29, 29, 0.94);
+
+        /* System Spectrum Colors - Dark Mode */
+        --system-blue: #0A84FF;
+        --system-orange: #FF9F0A;
+        --system-green: #30D158;
+        --system-red: #FF453A;
+        --system-teal: #40CBE0;
+        /* Refined Teal for Dark Mode */
+        --system-indigo: #5E5CE6;
+>>>>>>> e6176b2a897dc428f4064e7dd78eff7c6552ac39
     }
 }
 
 body {
     margin: 0;
     padding: 0;
+<<<<<<< HEAD
     font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background: var(--bg-gradient);
     background-attachment: fixed;
+=======
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--background-color);
+>>>>>>> e6176b2a897dc428f4064e7dd78eff7c6552ac39
     color: var(--text-primary);
     -webkit-font-smoothing: antialiased;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
+<<<<<<< HEAD
     letter-spacing: -0.01em;
+=======
+>>>>>>> e6176b2a897dc428f4064e7dd78eff7c6552ac39
 }
 
 /* App Structure */
