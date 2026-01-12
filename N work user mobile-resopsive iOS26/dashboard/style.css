@@ -1,0 +1,583 @@
+:root {
+    /* iOS System Colors - Light Mode */
+    --background-color: #F2F2F7;
+    /* System Grouped Background */
+    --card-background: #FFFFFF;
+    /* Secondary System Grouped Background */
+    --text-primary: #000000;
+    /* Label */
+    --text-secondary: rgba(60, 60, 67, 0.6);
+    /* Secondary Label */
+    --separator-color: rgba(60, 60, 67, 0.29);
+    /* Separator / Opaque Separator */
+    --accent-color: #007AFF;
+    /* System Blue */
+    --tab-bar-bg: rgba(249, 249, 249, 0.94);
+    /* Bar Background */
+
+    /* System Spectrum Colors - Light Mode */
+    --system-blue: #007AFF;
+    --system-orange: #FF9500;
+    --system-green: #34C759;
+    --system-red: #FF3B30;
+    --system-teal: #30B0C7;
+    --system-indigo: #5856D6;
+
+    /* Safe Area Variables (handled by env() in modern browsers, fallback here) */
+    --sat: env(safe-area-inset-top, 20px);
+    --sab: env(safe-area-inset-bottom, 20px);
+
+    /* Glass Theme Variables */
+    --glass-bg: rgba(255, 255, 255, 0.8);
+    --glass-border: rgba(255, 255, 255, 0.5);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* iOS System Colors - Dark Mode */
+        --background-color: #000000;
+        --card-background: #1C1C1E;
+        --text-primary: #FFFFFF;
+        --text-secondary: rgba(235, 235, 245, 0.6);
+        --separator-color: rgba(84, 84, 88, 0.65);
+        --accent-color: #0A84FF;
+        /* Dark Mode Blue */
+        --tab-bar-bg: rgba(29, 29, 29, 0.94);
+
+        /* System Spectrum Colors - Dark Mode */
+        --system-blue: #0A84FF;
+        --system-orange: #FF9F0A;
+        --system-green: #30D158;
+        --system-red: #FF453A;
+        --system-teal: #40CBE0;
+        /* Refined Teal for Dark Mode */
+        --system-indigo: #5E5CE6;
+    }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* App Structure */
+.app-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.view-section {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    flex: 1;
+    overflow: hidden;
+}
+
+.content-scroll {
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: calc(49px + var(--sab) + 20px);
+    /* Tab bar height + safe area + spacing */
+    padding-top: var(--sat);
+}
+
+/* Header with Date and Avatar */
+.main-header {
+    background: transparent;
+    padding: 24px 20px 10px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.header-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.header-date {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    letter-spacing: 0.5px;
+}
+
+.header-avatar {
+    width: 36px;
+    height: 36px;
+    background-color: #8E8E93;
+    /* System Gray */
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.greeting {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.8px;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+}
+
+/* Glass Cards Grid */
+.card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 20px 20px;
+}
+
+.action-card-glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.action-card-glass:active {
+    transform: scale(0.96) translateY(2px);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.card-icon-spatial {
+    width: 54px;
+    height: 54px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-title-grid {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* Quote Card Glass */
+.quote-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(30px) saturate(150%);
+    -webkit-backdrop-filter: blur(30px) saturate(150%);
+    padding: 20px;
+    border-radius: var(--radius-l);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.03);
+}
+
+.quote-text {
+    font-style: italic;
+    font-size: 15px;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.quote-author {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    display: block;
+    text-align: right;
+}
+
+/* Card Stack (Inset Grouped List) */
+.card-stack {
+    margin: 20px 16px;
+    background: var(--card-background);
+    border-radius: 12px;
+    overflow: hidden;
+    /* For inner borders */
+}
+
+.action-card {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.action-card:active {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Divider lines between items, but not last */
+.action-card:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 56px;
+    /* Align with text start */
+    right: 0;
+    height: 0.5px;
+    background-color: var(--separator-color);
+}
+
+.card-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+    color: white;
+    /* Icons on colored backgrounds are usually white */
+}
+
+.icon-svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* System Spectrum Utilities */
+.icon-blue {
+    background-color: var(--system-blue);
+}
+
+.icon-orange {
+    background-color: var(--system-orange);
+}
+
+.icon-green {
+    background-color: var(--system-green);
+}
+
+.icon-red {
+    background-color: var(--system-red);
+}
+
+.icon-teal {
+    background-color: var(--system-teal);
+}
+
+.icon-indigo {
+    background-color: var(--system-indigo);
+}
+
+.card-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    font-size: 17px;
+    font-weight: 500;
+    /* Apple uses standard or medium weight for list items */
+}
+
+.card-arrow {
+    color: #C7C7CC;
+    /* Standard iOS Chevron Color */
+    display: flex;
+    align-items: center;
+}
+
+.chevron {
+    width: 20px;
+    height: 20px;
+}
+
+/* Standard iOS Tab Bar */
+.tab-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: calc(49px + var(--sab));
+    background: var(--tab-bar-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-top: 0.5px solid rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding-top: 8px;
+    padding-bottom: var(--sab);
+    z-index: 1000;
+}
+
+.tab-item {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 20px;
+}
+
+.tab-item:active {
+    background: rgba(0, 0, 0, 0.05);
+    transform: scale(0.9);
+}
+
+.tab-item.active {
+    color: var(--accent-color);
+}
+
+.tab-icon {
+    margin-bottom: 2px;
+}
+
+.tab-icon .icon-svg {
+    width: 26px;
+    height: 26px;
+}
+
+.tab-label {
+    font-size: 11px;
+    font-weight: 600;
+}
+
+@media (prefers-color-scheme: dark) {
+    .tab-bar {
+        border-top: 0.5px solid rgba(255, 255, 255, 0.15);
+    }
+}
+
+/* Sub Header (for Profile/Notification) */
+.sub-header {
+    background: var(--tab-bar-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);
+    padding: var(--sat) 16px 10px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+@media (prefers-color-scheme: dark) {
+    .sub-header {
+        border-bottom: 0.5px solid rgba(255, 255, 255, 0.15);
+    }
+}
+
+.back-button {
+    background: none;
+    border: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    color: var(--accent-color);
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.back-chevron {
+    width: 24px;
+    height: 24px;
+    margin-left: -8px; 
+}
+
+.back-text {
+    margin-left: -2px;
+}
+
+.header-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-primary);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.header-action {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--accent-color);
+    cursor: pointer;
+}
+
+/* Profile Header Card */
+.profile-header-card {
+    background: var(--card-background);
+    margin: 20px 16px;
+    border-radius: 12px;
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.profile-avatar-large {
+    width: 80px;
+    height: 80px;
+    background-color: #8E8E93;
+    color: white;
+    font-size: 32px;
+    font-weight: 600;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.profile-name {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: var(--text-primary);
+}
+
+.profile-email {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.profile-id {
+    font-size: 12px;
+    color: #8E8E93;
+    font-family: monospace;
+    background: rgba(0,0,0,0.05);
+    padding: 4px 8px;
+    border-radius: 4px;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Section Title */
+.section-title {
+    font-size: 13px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    margin: 24px 16px 8px 32px; /* Indented slightly more than cards */
+    font-weight: 500;
+}
+
+/* Form Styles */
+.form-stack {
+    padding: 0 16px;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 0.5px solid var(--separator-color);
+}
+
+.form-row:last-child {
+    border-bottom: none;
+}
+
+.form-row.vertical {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.form-label {
+    width: 120px;
+    font-size: 16px;
+    color: var(--text-primary);
+    flex-shrink: 0;
+}
+
+.form-input, .form-select, .form-textarea {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    color: var(--text-secondary); /* Often slightly lighter for values */
+    font-family: inherit;
+    text-align: right; /* iOS form style */
+    width: 100%;
+    outline: none;
+}
+
+.form-row.vertical .form-input, 
+.form-row.vertical .form-textarea {
+    text-align: left;
+    color: var(--text-primary);
+}
+
+.form-textarea {
+    resize: none;
+    line-height: 1.4;
+}
+
+/* Notification Setup */
+.notification-setup-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 32px 24px;
+    gap: 16px;
+}
+
+.setup-icon-circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--system-blue); /* Default accent */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
+}
+
+.icon-svg-large {
+    width: 32px;
+    height: 32px;
+}
+
+.notification-setup-card h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0;
+    color: var(--text-primary);
+}
+
+.notification-setup-card p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.4;
+    max-width: 280px;
+}
