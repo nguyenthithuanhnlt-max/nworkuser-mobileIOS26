@@ -1,9 +1,34 @@
 # NQuoc Mobile Dashboard Pattern
 
-This repository contains the mobile dashboard implementation and the design system documentation for NQuoc products, following the iOS 26 design guidelines.
+This repository contains the mobile dashboard implementation and the design system documentation for NQuoc user products, following the iOS 26 design guidelines.
 
 ## 📂 Project Structure
 
+## I. Information Architecture (Navigation Hierarchy)
+The mobile application is organized into 5 primary distinct tabs:
+
+### 1. Trang chủ (Home)
+*   **Purpose**: Central hub for daily overview and quick access.
+*   **Key Elements**:
+    *   Greeting & Date.
+    *   Daily Motivation (Quote Card).
+    *   Stack: "Lịch làm việc", "Nhiệm vụ", "Tiến độ học tập", "Sự kiện".
+
+### 2. Công việc (Work)
+*   **Purpose**: Professional task management and scheduling.
+*   **Sub-sections**: TODO List, Calendar View, Project Boards.
+
+### 3. Học tập (Learn)
+*   **Purpose**: Personal development and course tracking.
+*   **Sub-sections**: My Courses, Progress Stats, Library.
+
+### 4. Ứng dụng (Apps)
+*   **Purpose**: Access to internal tools and utilities.
+*   **Sub-sections**: Meeting Rooms, Documents, Reports.
+
+### 5. Menu
+*   **Purpose**: Personal settings and less frequent actions.
+*   **Sub-sections**: User Profile, Notifications, App Settings, Logout.
 ### 📱 Implementation
 *   **`dashboard/`**
     *   Contains the core mobile dashboard code.

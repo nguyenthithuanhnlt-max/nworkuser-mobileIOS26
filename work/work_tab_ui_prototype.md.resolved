@@ -1,0 +1,576 @@
+# Work Tab Mobile UI - Prototype & Visual Specifications
+
+## Overview
+This document presents the complete UI prototype for the Work tab, following iOS 26 design standards and maintaining consistency with the existing dashboard UI.
+
+---
+
+## Generated Mockups
+
+### 1. Work Dashboard Landing Page
+
+![Work Dashboard Landing](C:/Users/Admin/.gemini/antigravity/brain/eb17ffba-1a04-4a56-9be7-876c09814b38/work_dashboard_landing_1768366720498.png)
+
+**Key Features**:
+- Clean header with back navigation and user avatar
+- Three summary cards for quick access to Tasks, Meetings, and Calendar
+- Each card shows preview data (task count, upcoming meetings, events)
+- Floating action button for quick creation
+- Follows inset grouped list pattern from dashboard
+
+---
+
+### 2. My Tasks View
+
+![My Tasks View](C:/Users/Admin/.gemini/antigravity/brain/eb17ffba-1a04-4a56-9be7-876c09814b38/work_tasks_view_1768366746242.png)
+
+**Key Features**:
+- Segmented control to switch between "My Tasks" and "By Project"
+- Quick filter pills (Today, This Week, All)
+- Tasks grouped by status (TODO, DOING, DONE)
+- Priority indicators (colored dots)
+- Metadata icons (comments, attachments, subtasks)
+- Clean card-based layout
+
+---
+
+## Additional Screen Specifications
+
+### 3. Work Calendar - Agenda View
+
+```
+┌─────────────────────────────────────┐
+│  <  Lịch làm việc              ⚙️   │
+├─────────────────────────────────────┤
+│                                     │
+│  ┌─────────────────────────────┐   │
+│  │  List  │  Day  │  Week      │   │  ← View Toggle
+│  └─────────────────────────────┘   │
+│                                     │
+│  ┌─────────────────────────────┐   │
+│  │  <   Today   Jan 14, 2026  >│   │  ← Date Navigator
+│  └─────────────────────────────┘   │
+│                                     │
+│  ─── 8:00 Sáng ─────────────────   │  ← Time Marker
+│                                     │
+│  ┌─────────────────────────────┐   │
+│  │ ┃ 🔵 Team Standup           │   │  ← Meeting (Blue border)
+│  │ ┃ 8:00 - 8:30               │   │
+│  │ ┃ 👥 5 participants         │   │
+│  │ ┃                           │   │
+│  │ ┃ ┌───────────────────────┐ │   │
+│  │ ┃ │   Join Zoom           │ │   │  ← Quick Join Button
+│  │ ┃ └───────────────────────┘ │   │
+│  └─────────────────────────────┘   │
+│                                     │
+│  ─── 10:00 Sáng ────────────────   │
+│                                     │
+│  ┌─────────────────────────────┐   │
+│  │   Client Review             │   │  ← Regular Event
+│  │   10:00 - 11:00             │   │
+│  │   📍 Meeting Room A         │   │
+│  └─────────────────────────────┘   │
+│                                     │
+│  ─── 2:00 Chiều ────────────────   │
+│                                     │
+│  ┌─────────────────────────────┐   │
+│  │ ┃ 🔵 Sprint Planning        │   │
+│  │ ┃ 2:00 - 3:30               │   │
+│  │ ┃ 👥 8 participants         │   │
+│  │ ┃                           │   │
+│  │ ┃ ┌───────────────────────┐ │   │
+│  │ ┃ │   Join Teams          │ │   │
+│  │ ┃ └───────────────────────┘ │   │
+│  └─────────────────────────────┘   │
+│                                     │
+│                                     │
+│                              ┌───┐ │
+│                              │ + │ │  ← Floating Button
+│                              └───┘ │
+└─────────────────────────────────────┘
+```
+
+**Design Specifications**:
+
+| Element | Specification |
+|---------|---------------|
+| **Meeting Badge** | 4px blue left border + blue dot indicator |
+| **Quick Join Button** | Tinted style: `rgba(0, 122, 255, 0.1)` bg, `#007AFF` text |
+| **Time Markers** | Subhead (15pt), Secondary color, with hairline separator |
+| **Event Cards** | 12px radius, white bg, 16px padding, subtle shadow |
+| **Date Navigator** | Pill shape, gray bg, arrows for navigation |
+
+---
+
+### 4. N-Meeting List View
+
+```
+┌─────────────────────────────────────┐
+│  <  Cuộc họp                   🔍   │
+├─────────────────────────────────────┤
+│                                     │
+│  [All] [Today] [Upcoming] [Finish]  │  ← Filter Pills
+│                                     │
+│  ─── Hôm nay ───────────────────    │  ← Date Group
+│                                     │
+│  ┌─────────────────────────────┐   │
+│  │ 🟢 Team Standup             │   │  ← Active Meeting
+│  │ 10:00 - 10:30               │   │
+│  │ 📹 Zoom                     │   │
+│  │ 👥 thuanh@, nhi@...         │   │
+│  │                             │   │
+│  │ ┌─────────────────────────┐ │   │
+│  │ │     Join Now            │ │   │  ← Prominent Join
+│  │ └─────────────────────────┘ │   │
+│  └─────────────────────────────┘   │
+│                                     │
+│  ┌─────────────────────────────┐   │
+│  │   Sprint Planning          >│   │  ← Upcoming Meeting
+│  │   14:00 - 15:30             │   │
+│  │   📹 Teams                  │   │
+│  │   👥 8 participants         │   │
+│  └─────────────────────────────┘   │
+│                                     │
+│  ─── Ngày mai ──────────────────    │
+│                                     │
+│  ┌─────────────────────────────┐   │
+│  │   Client Presentation      >│   │
+│  │   09:00 - 10:00             │   │
+│  │   📹 Google Meet            │   │
+│  │   👥 5 participants         │   │
+│  └─────────────────────────────┘   │
+│                                     │
+│                              ┌───┐ │
+│                              │ + │ │
+│                              └───┘ │
+└─────────────────────────────────────┘
+```
+
+**Design Specifications**:
+
+| Element | Specification |
+|---------|---------------|
+| **Active Indicator** | 🟢 Green dot (System Green `#34C759`) |
+| **Join Now Button** | Filled primary: `#007AFF` bg, white text, full width |
+| **Filter Pills** | Active: filled blue, Inactive: gray outline |
+| **Platform Icons** | 📹 with platform name (Zoom/Teams/Meet) |
+| **Participants** | Truncated email list with count |
+
+---
+
+### 5. Task Detail Modal
+
+```
+┌─────────────────────────────────────┐
+│  ✕                         ⋯    ✓  │  ← Modal Header
+├─────────────────────────────────────┤
+│                                     │
+│         ┌──────────────┐            │
+│         │  Todo    ▼   │            │  ← Status Dropdown
+│         └──────────────┘            │
+│                                     │
+│  Design mobile UI mockups           │  ← Title (Editable)
+│  ═══════════════════════════════    │
+│                                     │
+│  📅 Dates                           │
+│  Start: Jan 10, 2026                │
+│  Due: Jan 15, 2026                  │
+│                                     │
+│  👥 Assignees                       │
+│  ┌──────────┐ ┌──────────┐         │
+│  │ 👤 Thu   │ │ 👤 Nhi   │         │  ← Avatar Chips
+│  │   Anh    │ │          │         │
+│  └──────────┘ └──────────┘         │
+│                                     │
+│  🏷️ Labels                          │
+│  ┌─────────┐ ┌──────────────┐      │
+│  │ Design  │ │ High Priority│      │  ← Tag Chips
+│  └─────────┘ └──────────────┘      │
+│                                     │
+│  📝 Description                     │
+│  ┌─────────────────────────────┐   │
+│  │ Create mobile UI mockups    │   │
+│  │ for the Work tab following  │   │  ← Text Area
+│  │ iOS 26 design standards...  │   │
+│  └─────────────────────────────┘   │
+│                                     │
+│  📎 Attachments (2)                 │
+│  • wireframe.fig                    │
+│  • requirements.pdf                 │
+│                                     │
+│  💬 Comments (5)                    │
+│  View all comments >                │
+│                                     │
+└─────────────────────────────────────┘
+```
+
+**Design Specifications**:
+
+| Element | Specification |
+|---------|---------------|
+| **Modal Type** | Full-screen sheet with rounded top corners |
+| **Status Dropdown** | Pill button, light gray bg, centered |
+| **Title Field** | Title 2 (22pt Bold), editable, underline separator |
+| **Avatar Chips** | 40px circles, light gray bg, name below |
+| **Tag Chips** | Colored bg (blue, red, etc.), white text, 8px radius |
+| **Description Area** | Secondary bg, 8px radius, multiline |
+
+---
+
+### 6. Meeting Detail Modal
+
+```
+┌─────────────────────────────────────┐
+│  ✕                         ⋯        │  ← Modal Header
+├─────────────────────────────────────┤
+│                                     │
+│  Team Standup                       │  ← Meeting Title
+│  ═══════════════════════════════    │
+│                                     │
+│  📅 Jan 14, 2026                    │
+│  ⏰ 10:00 - 10:30 (30 min)          │
+│                                     │
+│  📹 Platform                        │
+│  Zoom                               │
+│                                     │
+│  ┌──────────────┐ ┌──────────────┐ │
+│  │  Copy Link   │ │ Join Meeting │ │  ← Action Buttons
+│  └──────────────┘ └──────────────┘ │
+│                                     │
+│  👥 Participants (5)                │
+│  • thuanh@nquoc.vn                  │
+│  • nhi@nquoc.vn                     │
+│  • [+3 more]                        │
+│                                     │
+│  📝 Agenda                          │
+│  • Daily updates                    │
+│  • Blockers discussion              │
+│  • Sprint planning                  │
+│                                     │
+│  📎 Attachments                     │
+│  • agenda.pdf                       │
+│                                     │
+└─────────────────────────────────────┘
+```
+
+**Design Specifications**:
+
+| Element | Specification |
+|---------|---------------|
+| **Copy Link Button** | Tinted style (light blue bg, blue text) |
+| **Join Meeting Button** | Filled primary (blue bg, white text) |
+| **Participants List** | Expandable, shows first 2-3 then "+X more" |
+| **Agenda** | Bullet list, Body text (17pt) |
+
+---
+
+## Component Library
+
+### Floating Action Button (FAB)
+
+```css
+.fab {
+  width: 56px;
+  height: 56px;
+  border-radius: 28px;
+  background: #007AFF;
+  box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
+  position: fixed;
+  bottom: 80px;  /* Above tab bar */
+  right: 16px;
+}
+```
+
+**Behavior**:
+- Tap opens action sheet with 3 options:
+  1. "Create Task" (📋 icon)
+  2. "Schedule Meeting" (📅 icon)
+  3. "Add Event" (➕ icon)
+
+---
+
+### Quick Filter Pills
+
+```css
+.filter-pill {
+  height: 32px;
+  padding: 0 16px;
+  border-radius: 16px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.filter-pill.active {
+  background: #007AFF;
+  color: #FFFFFF;
+}
+
+.filter-pill.inactive {
+  background: transparent;
+  border: 1px solid rgba(60, 60, 67, 0.29);
+  color: rgba(60, 60, 67, 0.6);
+}
+```
+
+---
+
+### Task Card
+
+```css
+.task-card {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 8px 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.task-card .priority-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+.task-card .priority-high { background: #FF3B30; }
+.task-card .priority-medium { background: #FF9500; }
+.task-card .priority-low { background: #8E8E93; }
+```
+
+---
+
+### Event Card (Calendar)
+
+```css
+.event-card {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 8px 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.event-card.meeting {
+  border-left: 4px solid #007AFF;
+  padding-left: 12px;
+}
+
+.event-card .join-button {
+  background: rgba(0, 122, 255, 0.1);
+  color: #007AFF;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: 600;
+  margin-top: 12px;
+}
+```
+
+---
+
+### Meeting Card
+
+```css
+.meeting-card {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 8px 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.meeting-card.active .status-indicator {
+  color: #34C759;
+  font-size: 12px;
+}
+
+.meeting-card .join-now-button {
+  background: #007AFF;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-weight: 600;
+  width: 100%;
+  margin-top: 12px;
+}
+```
+
+---
+
+## Color Palette
+
+### Functional Colors
+
+| Purpose | Color | Hex Code |
+|---------|-------|----------|
+| Primary Action | System Blue | `#007AFF` |
+| Meeting Indicator | System Blue | `#007AFF` |
+| Active/Joinable | System Green | `#34C759` |
+| High Priority | System Red | `#FF3B30` |
+| Medium Priority | System Orange | `#FF9500` |
+| Low Priority | System Gray | `#8E8E93` |
+
+### Background Colors
+
+| Element | Light Mode | Dark Mode |
+|---------|------------|-----------|
+| Screen Background | `#F2F2F7` | `#000000` |
+| Card Background | `#FFFFFF` | `#1C1C1E` |
+| Secondary Background | `#F2F2F7` | `#2C2C2E` |
+
+### Text Colors
+
+| Type | Light Mode | Dark Mode |
+|------|------------|-----------|
+| Primary | `#000000` | `#FFFFFF` |
+| Secondary | `rgba(60,60,67,0.6)` | `rgba(235,235,245,0.6)` |
+| Tertiary | `rgba(60,60,67,0.3)` | `rgba(235,235,245,0.3)` |
+
+---
+
+## Typography Scale
+
+| Style | Font | Size | Weight | Line Height | Usage |
+|-------|------|------|--------|-------------|-------|
+| Large Title | SF Pro Display | 34pt | Bold (800) | 41pt | Section headers |
+| Title 1 | SF Pro Display | 28pt | Bold (700) | 34pt | Page titles |
+| Title 2 | SF Pro Display | 22pt | Bold (700) | 28pt | Modal titles |
+| Headline | SF Pro Text | 17pt | Semibold (600) | 22pt | Card titles |
+| Body | SF Pro Text | 17pt | Regular (400) | 22pt | Body text |
+| Subhead | SF Pro Text | 15pt | Regular (400) | 20pt | Metadata |
+| Footnote | SF Pro Text | 13pt | Regular (400) | 18pt | Captions |
+| Caption | SF Pro Text | 12pt | Regular (400) | 16pt | Small labels |
+
+---
+
+## Spacing System
+
+### Grid
+- **Base Unit**: 8px
+- **Common Spacings**: 8px, 16px, 24px, 32px
+
+### Card Spacing
+- **Lateral Margins**: 16px
+- **Internal Padding**: 16px
+- **Card Gap**: 8px vertical
+
+### Touch Targets
+- **Minimum Size**: 44x44pt (iOS standard)
+- **Button Height**: 44-50pt
+- **List Item Height**: 60-72pt
+
+---
+
+## Interaction Patterns
+
+### Navigation
+- **Tap Card**: Navigate to detail view
+- **Swipe Left**: Reveal quick actions (delete, edit)
+- **Pull to Refresh**: Update data
+- **Swipe Down**: Dismiss modal
+
+### Quick Actions
+- **Long Press FAB**: Show quick action preview
+- **Tap FAB**: Open action sheet
+- **Tap Filter Pill**: Toggle filter
+- **Tap Segmented Control**: Switch view
+
+### Gestures
+- **Horizontal Swipe** (Calendar): Change day/week
+- **Vertical Scroll**: Browse content
+- **Pinch** (Calendar Day View): Zoom time scale
+
+---
+
+## Accessibility Features
+
+### VoiceOver Labels
+- All interactive elements have descriptive labels
+- Card content is grouped for efficient navigation
+- Status changes are announced
+
+### Dynamic Type
+- All text scales with system font size settings
+- Layouts adapt to larger text sizes
+- Minimum touch targets maintained
+
+### Color Contrast
+- All text meets WCAG AA standards (4.5:1 for body, 3:1 for large text)
+- Icons have sufficient contrast
+- Focus indicators are visible
+
+### Haptic Feedback
+- Button taps: Light impact
+- Successful actions: Success notification
+- Errors: Error notification
+- Swipe actions: Selection feedback
+
+---
+
+## Responsive Behavior
+
+### iPhone SE (Small Screen)
+- Single column layout
+- Compact spacing (reduce to 12px margins)
+- Smaller font sizes (scale down 1-2pt)
+- Horizontal scroll for filter pills
+
+### iPhone Pro Max (Large Screen)
+- Standard layout
+- Full spacing (16px margins)
+- Standard font sizes
+- More content visible
+
+### iPad
+- Two-column layout for dashboard
+- Master-detail split view for task/meeting details
+- Wider cards (max 600px)
+- Side-by-side modals
+
+---
+
+## Animation & Transitions
+
+### Screen Transitions
+- **Push/Pop**: iOS standard slide (300ms)
+- **Modal Present**: Slide up from bottom (400ms)
+- **Modal Dismiss**: Slide down (300ms)
+
+### Micro-interactions
+- **Button Tap**: Scale down to 0.95 (100ms)
+- **Card Tap**: Subtle scale + shadow (150ms)
+- **Filter Toggle**: Smooth color transition (200ms)
+- **FAB Tap**: Rotate icon 45° (200ms)
+
+### Loading States
+- **Pull to Refresh**: iOS standard spinner
+- **Infinite Scroll**: Bottom loading indicator
+- **Skeleton Screens**: For initial load
+
+---
+
+## Open Questions for Review
+
+1. **Task Progress**: Should we show subtask completion (e.g., "2/4 completed") on all task cards, or only when expanded?
+
+2. **Drag & Drop**: Do you want drag-and-drop functionality to reorder tasks or move them between statuses?
+
+3. **Calendar Color Coding**: Should events be color-coded by:
+   - Calendar type (Work, Personal, etc.)?
+   - Project (matching task project colors)?
+   - Event type (Meeting, Task, Event)?
+
+4. **Offline Support**: Should the UI indicate offline mode with visual cues? Should we show cached data with a badge?
+
+5. **Notifications**: Should we show notification badges on the Work tab icon when there are:
+   - Overdue tasks?
+   - Meetings starting soon?
+   - Unread comments?
+
+6. **Search**: Where should search functionality be placed?
+   - Global search in header?
+   - Per-section search?
+   - Both?
+
+Please review the mockups and specifications above and let me know your thoughts!
